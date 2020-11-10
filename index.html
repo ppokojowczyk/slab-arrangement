@@ -1,0 +1,143 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="css/all.min.css">
+  <link rel="stylesheet" type="text/css" href="css/jquery-ruler.css">
+  <link rel="stylesheet" type="text/css" href="css/main.css">
+  <link href="https://fonts.googleapis.com/css?family=Oswald:200,300,400,500,600,700&amp;subset=latin-ext"
+    rel="stylesheet">
+  <title>Slab Arrangement</title>
+</head>
+
+<body class="no-footer">
+
+  <div id="lock-overlay"></div>
+
+  <div class="top-spacer"></div>
+
+  <main role="main" class="wrapper">
+
+    <div class="row">
+
+      <div class="col-3">
+
+        <div class="app-header container sticky-top round-left">
+
+          <div style="height: 10px"></div>
+
+          <form id="appForm" class="needs-validation" novalidate>
+
+            <div class="float-right">
+              <button type="submit" class="btn btn-primary" title="Arrange"><i class="fas fa-sync-alt"></i></button>
+              <button id="formClearButton" class="btn btn-danger" title="Clear"><i class="fas fa-trash"></i></button>
+              <button id="formPdfButton" class="btn btn-info" title="Generate PDF"><i
+                  class="fa fa-file-pdf"></i></button>
+              <button id="formDemoButton" class="btn btn-warning" title="Show example"><i
+                  class="fa fa-play"></i></button>
+            </div>
+
+            <h3>Slab</h3>
+
+            <hr />
+
+            <div class="row">
+              <div class="col-sm padding-small">
+                <div class="form-group">
+                  <input type="number" step="0.001" class="form-control" id="formMainContainerWidth"
+                    name="mainContainerWidth" placeholder="Width [m]" required>
+                </div>
+              </div>
+              <div class="col-sm padding-small">
+                <div class="form-group">
+                  <input type="number" step="0.001" class="form-control" id="formMainContainerHeight"
+                    name="mainContainerHeight" placeholder="Height [m]" required>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-sm padding-small">
+                <div class="form-group">
+                  <select type="select" class="form-control" id="formSortType" name="sortType"
+                    placeholder="Placement Mode" required>
+                    <option value="maxside">Maximization</option>
+                    <option value="area">Surface</option>
+                    <option value="width">Width</option>
+                    <option value="height">Height</option>
+                    <option value="random">Random</option>
+                    <option value="none">None</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-sm padding-small">
+                <div class="form-group">
+                  <input type="number" step="1" class="form-control" id="extraMargin" name="extraMargin"
+                    placeholder="Extra Margin [mm]" required>
+                </div>
+              </div>
+            </div>
+
+            <div class="float-right">
+              <button id="formAddElement" class="btn btn-success" title="Add Item"><i class="fas fa-plus"></i></button>
+            </div>
+
+            <h3>Items</h3>
+
+            <hr />
+
+            <div id="mainContainerElements"></div>
+
+            <div class="clearfix"></div>
+
+          </form>
+
+          <br />
+
+        </div>
+
+      </div>
+
+      <div class="col-9 round-right generator-output-column pdf-output-wrapper" style="background: #efefef;">
+
+        <div style="height: 10px"></div>
+
+        <div id="Canvas"></div>
+
+        <div class="clearfix"></div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+  <footer class="footer">
+    <div class="wrapper">
+      <span class="text-muted">Dev: <a href="http://www.pokojowczyk.pl/" class="footer-link">Piotr
+          Pokojowczyk</a></span>
+    </div>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+    integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script>
+  <script src="js/jsPDF-1.3.2/dist/jspdf.min.js"></script>
+  <script src='bin-packing/js/packer.js'></script>
+  <script src="js/jquery-ruler.js"></script>
+  <script src="js/main.js"></script>
+
+</body>
+
+</html>
